@@ -46,6 +46,10 @@ jobs:
         options: >
           -e "discovery.type=single-node" 
           -e "DISABLE_SECURITY_PLUGIN=true"
+          --health-cmd "curl 127.0.0.1:9200"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 15
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
@@ -62,8 +66,6 @@ jobs:
 
       - name: Run tests
         run: npm test
-        env:
-          OPENSEARCH_HOST: http://opensearch:9200
 
   automerge:
     name: Automerge Dependabot PRs
