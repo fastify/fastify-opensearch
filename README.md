@@ -16,7 +16,7 @@ npm i @fastify/opensearch
 
 ## Usage
 Add it to your project with `register` and you are done!  
-The plugin accepts the [same options](https://github.com/opensearch/opensearch-js#client-options) as the client.
+The plugin accepts the [same options](https://github.com/opensearch-project/opensearch-js/blob/main/index.d.ts#L105) as the client.
 
 ```js
 const fastify = require('fastify')()
