@@ -43,7 +43,7 @@ jobs:
         image: opensearchproject/opensearch:2.13.0
         ports:
           - 9200:9200
-        options: >
+        options: >-
           -e "discovery.type=single-node" 
           -e "DISABLE_SECURITY_PLUGIN=true"
           --health-cmd "curl 127.0.0.1:9200"
