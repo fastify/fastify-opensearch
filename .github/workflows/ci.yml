@@ -46,7 +46,6 @@ jobs:
         options: >
           -e "discovery.type=single-node" 
           -e "DISABLE_SECURITY_PLUGIN=true"
-          --name opensearch
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
