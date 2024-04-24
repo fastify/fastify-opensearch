@@ -1,10 +1,10 @@
 'use strict'
 
 const fp = require('fastify-plugin')
-const { Client } = require('@elastic/elasticsearch')
-const isElasticsearchClient = require('./lib/isElasticsearchClient')
+const { Client } = require('@opensearch-project/opensearch')
+const isOpensearchClient = require('./lib/isOpensearchClient')
 
-async function fastifyElasticsearch (fastify, options) {
+async function fastifyOpensearch (fastify, options) {
   const { namespace, healthcheck } = options
   delete options.namespace
   delete options.healthcheck
@@ -16,34 +16,34 @@ async function fastifyElasticsearch (fastify, options) {
   }
 
   if (namespace) {
-    if (!fastify.elastic) {
-      fastify.decorate('elastic', {})
+    if (!fastify.opensearch) {
+      fastify.decorate('opensearch', {})
     }
 
-    if (fastify.elastic[namespace]) {
-      throw new Error(`Elasticsearch namespace already used: ${namespace}`)
+    if (fastify.opensearch[namespace]) {
+      throw new Error(`Opensearch namespace already used: ${namespace}`)
     }
 
-    fastify.elastic[namespace] = client
+    fastify.opensearch[namespace] = client
 
     fastify.addHook('onClose', async (instance) => {
       // v8 client.close returns a promise and does not accept a callback
-      await instance.elastic[namespace].close()
+      await instance.opensearch[namespace].close()
     })
   } else {
     fastify
-      .decorate('elastic', client)
+      .decorate('opensearch', client)
       .addHook('onClose', async (instance) => {
-        await instance.elastic.close()
+        await instance.opensearch.close()
       })
   }
 }
 
-module.exports = fp(fastifyElasticsearch, {
+module.exports = fp(fastifyOpensearch, {
   fastify: '4.x',
-  name: '@fastify/elasticsearch'
+  name: '@fastify/opensearch'
 })
-module.exports.default = fastifyElasticsearch
-module.exports.fastifyElasticsearch = fastifyElasticsearch
+module.exports.default = fastifyOpensearch
+module.exports.fastifyOpensearch = fastifyOpensearch
 
-module.exports.isElasticsearchClient = isElasticsearchClient
+module.exports.isOpensearchClient = isOpensearchClient

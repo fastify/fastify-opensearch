@@ -1,13 +1,13 @@
-import fastifyElasticsearch from '..';
+import fastifyOpensearch from '..';
 import Fastify from 'fastify';
 import { expectAssignable, expectType } from 'tsd';
-import { Client } from '@elastic/elasticsearch';
+import { Client } from '@opensearch-project/opensearch';
 
 
 const fastify = Fastify()
-fastify.register(fastifyElasticsearch, { node: 'http://localhost:9200' })
+fastify.register(fastifyOpensearch, { node: 'https://localhost:9200' })
 
-expectType<boolean>(fastify.isElasticsearchClient(fastify.elastic))
-expectType<boolean>(fastify.isElasticsearchClient(fastify.elastic.asyncSearch))
-expectType<boolean>(fastify.isElasticsearchClient(fastify.elastic.aasdf))
-expectAssignable<(value: any) => value is Client>(fastifyElasticsearch.isElasticsearchClient)
+expectType<boolean>(fastify.isOpensearchClient(fastify.opensearch))
+expectType<boolean>(fastify.isOpensearchClient(fastify.opensearch.asyncSearch))
+expectType<boolean>(fastify.isOpensearchClient(fastify.opensearch.aasdf))
+expectAssignable<(value: any) => value is Client>(fastifyOpensearch.isOpensearchClient)

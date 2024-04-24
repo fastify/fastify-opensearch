@@ -1,24 +1,24 @@
 'use strict'
 
 const { test } = require('tap')
-const { Client } = require('@elastic/elasticsearch')
+const { Client } = require('@opensearch-project/opensearch')
 const Fastify = require('fastify')
-const fastifyElasticsearch = require('..')
-const isElasticsearchClient = require('..').isElasticsearchClient
+const fastifyOpensearch = require('..')
+const isOpensearchClient = require('..').isOpensearchClient
 
 test('with reachable cluster', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
-  fastify.register(fastifyElasticsearch, { node: 'http://localhost:9200' })
+  fastify.register(fastifyOpensearch, { node: 'http://localhost:9200' })
 
   await fastify.ready()
-  t.equal(fastify.elastic.name, 'elasticsearch-js')
+  t.equal(fastify.opensearch.name, 'opensearch-js')
 })
 
 test('with unreachable cluster', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
-  fastify.register(fastifyElasticsearch, { node: 'http://localhost:9201' })
+  fastify.register(fastifyOpensearch, { node: 'http://localhost:9201' })
 
   try {
     await fastify.ready()
@@ -31,14 +31,14 @@ test('with unreachable cluster', async t => {
 test('with unreachable cluster and healthcheck disabled', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
-  fastify.register(fastifyElasticsearch, {
+  fastify.register(fastifyOpensearch, {
     node: 'http://localhost:9201',
     healthcheck: false
   })
 
   try {
     await fastify.ready()
-    t.equal(fastify.elastic.name, 'elasticsearch-js')
+    t.equal(fastify.opensearch.name, 'opensearch-js')
   } catch (err) {
     t.fail('should not error')
   }
@@ -47,27 +47,27 @@ test('with unreachable cluster and healthcheck disabled', async t => {
 test('namespaced', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
-  fastify.register(fastifyElasticsearch, {
+  fastify.register(fastifyOpensearch, {
     node: 'http://localhost:9200',
     namespace: 'cluster'
   })
 
   await fastify.ready()
-  t.strictEqual(fastify.elastic.cluster.name, 'elasticsearch-js')
-  t.equal(isElasticsearchClient(fastify.elastic), false)
-  t.equal(isElasticsearchClient(fastify.elastic.cluster), true)
+  t.strictEqual(fastify.opensearch.cluster.name, 'opensearch-js')
+  t.equal(isOpensearchClient(fastify.opensearch), false)
+  t.equal(isOpensearchClient(fastify.opensearch.cluster), true)
   await fastify.close()
 })
 
 test('namespaced (errored)', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
-  fastify.register(fastifyElasticsearch, {
+  fastify.register(fastifyOpensearch, {
     node: 'http://localhost:9200',
     namespace: 'cluster'
   })
 
-  fastify.register(fastifyElasticsearch, {
+  fastify.register(fastifyOpensearch, {
     node: 'http://localhost:9200',
     namespace: 'cluster'
   })
@@ -88,18 +88,18 @@ test('custom client', async t => {
 
   const fastify = Fastify()
   t.teardown(() => fastify.close())
-  fastify.register(fastifyElasticsearch, { client })
+  fastify.register(fastifyOpensearch, { client })
 
   await fastify.ready()
-  t.equal(isElasticsearchClient(fastify.elastic), true)
-  t.strictEqual(fastify.elastic.name, 'custom')
+  t.equal(isOpensearchClient(fastify.opensearch), true)
+  t.strictEqual(fastify.opensearch.name, 'custom')
   await fastify.close()
 })
 
 test('Missing configuration', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
-  fastify.register(fastifyElasticsearch)
+  fastify.register(fastifyOpensearch)
 
   try {
     await fastify.ready()
