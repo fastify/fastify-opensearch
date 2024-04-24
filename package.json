@@ -1,7 +1,7 @@
 {
-  "name": "@fastify/elasticsearch",
+  "name": "@fastify/opensearch",
   "version": "3.1.0",
-  "description": "Fastify plugin for elastic search",
+  "description": "Fastify plugin for opensearch",
   "main": "index.js",
   "type": "commonjs",
   "types": "types/index.d.ts",
@@ -13,23 +13,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fastify/fastify-elasticsearch.git"
+    "url": "git+https://github.com/fastify/fastify-opensearch.git"
   },
   "keywords": [
     "fastify",
-    "elastic",
-    "elasticsearch",
-    "elastic search",
-    "ES"
+    "open",
+    "opensearch",
+    "open search",
+    "opendistro",
+    "open distro"
   ],
-  "author": "Tommaso Allevi - @allevo",
+  "author": "RodrigoDornelles - @rodrigodornelles",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fastify/fastify-elasticsearch/issues"
+    "url": "https://github.com/fastify/fastify-opensearch/issues"
   },
-  "homepage": "https://github.com/fastify/fastify-elasticsearch#readme",
+  "homepage": "https://github.com/fastify/fastify-opensearch#readme",
   "dependencies": {
-    "@elastic/elasticsearch": "^8.2.1",
+    "@opensearch-project/opensearch": "^2.5.0",
     "fastify-plugin": "^4.0.0"
   },
   "devDependencies": {

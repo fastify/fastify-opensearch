@@ -6,6 +6,6 @@
 exec docker run \
   --rm \
   -e "discovery.type=single-node" \
-  -e "xpack.security.enabled=false" \
+  -e "DISABLE_SECURITY_PLUGIN=true" \
   -p 9200:9200 \
-  docker.elastic.co/elasticsearch/elasticsearch:8.3.2
+  docker.io/opensearchproject/opensearch:2.13.0
