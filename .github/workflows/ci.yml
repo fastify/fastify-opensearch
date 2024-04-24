@@ -37,7 +37,7 @@ jobs:
       contents: read
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [14, 16, 18, 20]
     services:
       opensearch:
         image: opensearchproject/opensearch:2.13.0

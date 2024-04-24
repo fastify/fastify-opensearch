@@ -5,13 +5,11 @@ const { Client } = require('@opensearch-project/opensearch')
 const Fastify = require('fastify')
 const fastifyOpensearch = require('..')
 const isOpensearchClient = require('..').isOpensearchClient
-const opensearch_host = process.env.OPENSEARCH_HOST ?? 'http://localhost:9200'
-const opensearch_wrong_host = process.env.OPENSEARCH_WRONG_HOST ?? 'http://localhost:9201'
 
 test('with reachable cluster', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
-  fastify.register(fastifyOpensearch, { node: opensearch_host })
+  fastify.register(fastifyOpensearch, { node: 'http://localhost:9200' })
 
   await fastify.ready()
   t.equal(fastify.opensearch.name, 'opensearch-js')
@@ -20,7 +18,7 @@ test('with reachable cluster', async t => {
 test('with unreachable cluster', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
-  fastify.register(fastifyOpensearch, { node: opensearch_wrong_host })
+  fastify.register(fastifyOpensearch, { node: 'http://localhost:9201' })
 
   try {
     await fastify.ready()
@@ -34,7 +32,7 @@ test('with unreachable cluster and healthcheck disabled', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
   fastify.register(fastifyOpensearch, {
-    node: opensearch_wrong_host,
+    node: 'http://localhost:9201',
     healthcheck: false
   })
 
@@ -50,7 +48,7 @@ test('namespaced', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
   fastify.register(fastifyOpensearch, {
-    node: opensearch_host,
+    node: 'http://localhost:9200',
     namespace: 'cluster'
   })
 
@@ -65,12 +63,12 @@ test('namespaced (errored)', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
   fastify.register(fastifyOpensearch, {
-    node: opensearch_host,
+    node: 'http://localhost:9200',
     namespace: 'cluster'
   })
 
   fastify.register(fastifyOpensearch, {
-    node: opensearch_host,
+    node: 'http://localhost:9200',
     namespace: 'cluster'
   })
 
@@ -84,7 +82,7 @@ test('namespaced (errored)', async t => {
 
 test('custom client', async t => {
   const client = new Client({
-    node: opensearch_host,
+    node: 'http://localhost:9200',
     name: 'custom'
   })
 
