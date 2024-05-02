@@ -1,6 +1,6 @@
 {
   "name": "@fastify/opensearch",
-  "version": "3.1.0",
+  "version": "1.0.0",
   "description": "Fastify plugin for opensearch",
   "main": "index.js",
   "type": "commonjs",
