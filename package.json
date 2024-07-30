@@ -34,7 +34,7 @@
     "fastify-plugin": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.1.0",
+    "@types/node": "^22.0.0",
     "@fastify/pre-commit": "^2.0.2",
     "fastify": "^4.0.0-rc.2",
     "standard": "^17.0.0",
