@@ -4,7 +4,7 @@
 [![NPM version](https://img.shields.io/npm/v/@fastify/opensearch.svg?style=flat)](https://www.npmjs.com/package/@fastify/opensearch)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://standardjs.com/)
 
-Fastify plugin for [Opensearch](https://opensearch.org/) for sharing the same ES client in every part of your server.  
+Fastify plugin for [Opensearch](https://opensearch.org/) for sharing the same ES client in every part of your server.
 Under the hood, the official [opensearch](https://www.npmjs.com/package/@opensearch-project/opensearch) module is used.
 
 
@@ -15,7 +15,7 @@ npm i @fastify/opensearch
 ```
 
 ## Usage
-Add it to your project with `register` and you are done!  
+Add it to your project with `register` and you are done!
 The plugin accepts the [same options](https://github.com/opensearch-project/opensearch-js/blob/main/index.d.ts#L105) as the client.
 
 ```js
@@ -96,7 +96,7 @@ fastify.listen({ port: 3000 }, err => {
 ```
 
 ## Versioning
-By default the latest and greatest version of the Opensearch client is used, see the [compatibility](https://www.opensearch.co/guide/en/opensearch/client/javascript-api/current/introduction.html#_compatibility) table to understand if the embedded client is correct for you.  
+By default the latest and greatest version of the Opensearch client is used, see the [compatibility](https://www.opensearch.co/guide/en/opensearch/client/javascript-api/current/introduction.html#_compatibility) table to understand if the embedded client is correct for you.
 If it is not, you can pass a custom client via the `client` option.
 ```js
 const fastify = require('fastify')()
