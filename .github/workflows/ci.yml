@@ -44,7 +44,7 @@ jobs:
         ports:
           - 9200:9200
         options: >-
-          -e "discovery.type=single-node" 
+          -e "discovery.type=single-node"
           -e "DISABLE_SECURITY_PLUGIN=true"
           --health-cmd "curl 127.0.0.1:9200"
           --health-interval 10s
