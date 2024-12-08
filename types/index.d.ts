@@ -1,5 +1,5 @@
-import type { FastifyPluginAsync } from 'fastify';
-import type { Client, ClientOptions } from '@opensearch-project/opensearch';
+import type { FastifyPluginAsync } from 'fastify'
+import type { Client, ClientOptions } from '@opensearch-project/opensearch'
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -23,5 +23,5 @@ declare namespace fastifyOpensearch {
   export { fastifyOpensearch as default }
 }
 
-declare function fastifyOpensearch(...params: Parameters<FastifyOpensearch>): ReturnType<FastifyOpensearch>
+declare function fastifyOpensearch (...params: Parameters<FastifyOpensearch>): ReturnType<FastifyOpensearch>
 export = fastifyOpensearch

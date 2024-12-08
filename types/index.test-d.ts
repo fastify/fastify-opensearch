@@ -1,8 +1,7 @@
-import fastifyOpensearch from '..';
-import Fastify from 'fastify';
-import { expectAssignable, expectType } from 'tsd';
-import { Client } from '@opensearch-project/opensearch';
-
+import fastifyOpensearch from '..'
+import Fastify from 'fastify'
+import { expectAssignable, expectType } from 'tsd'
+import { Client } from '@opensearch-project/opensearch'
 
 const fastify = Fastify()
 fastify.register(fastifyOpensearch, { node: 'https://localhost:9200' })

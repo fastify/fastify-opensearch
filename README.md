@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/fastify/fastify-opensearch/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/fastify/fastify-opensearch/actions/workflows/ci.yml)
 [![NPM version](https://img.shields.io/npm/v/@fastify/opensearch.svg?style=flat)](https://www.npmjs.com/package/@fastify/opensearch)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://standardjs.com/)
+[![neostandard javascript style](https://img.shields.io/badge/code_style-neostandard-brightgreen?style=flat)](https://github.com/neostandard/neostandard)
 
 Fastify plugin for [Opensearch](https://opensearch.org/) for sharing the same ES client in every part of your server.
 Under the hood, the official [opensearch](https://www.npmjs.com/package/@opensearch-project/opensearch) module is used.
