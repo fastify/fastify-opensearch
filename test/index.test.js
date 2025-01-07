@@ -39,7 +39,7 @@ test('with unreachable cluster and healthcheck disabled', async t => {
   try {
     await fastify.ready()
     t.equal(fastify.opensearch.name, 'opensearch-js')
-  } catch (err) {
+  } catch {
     t.fail('should not error')
   }
 })
