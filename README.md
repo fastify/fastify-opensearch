@@ -96,7 +96,7 @@ fastify.listen({ port: 3000 }, err => {
 ```
 
 ## Versioning
-By default the latest and greatest version of the Opensearch client is used, see the [compatibility](https://www.opensearch.co/guide/en/opensearch/client/javascript-api/current/introduction.html#_compatibility) table to understand if the embedded client is correct for you.
+By default the latest and greatest version of the Opensearch client is used, see the [compatibility](https://github.com/opensearch-project/opensearch-js/blob/main/COMPATIBILITY.md) table to understand if the embedded client is correct for you.
 If it is not, you can pass a custom client via the `client` option.
 ```js
 const fastify = require('fastify')()
