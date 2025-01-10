@@ -30,6 +30,16 @@
     "url": "https://github.com/fastify/fastify-opensearch/issues"
   },
   "homepage": "https://github.com/fastify/fastify-opensearch#readme",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/fastify"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/fastify"
+    }
+  ],
   "dependencies": {
     "@opensearch-project/opensearch": "^2.5.0",
     "fastify-plugin": "^4.0.0"
