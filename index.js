@@ -40,7 +40,7 @@ async function fastifyOpensearch (fastify, options) {
 }
 
 module.exports = fp(fastifyOpensearch, {
-  fastify: '4.x',
+  fastify: '5.x',
   name: '@fastify/opensearch'
 })
 module.exports.default = fastifyOpensearch
