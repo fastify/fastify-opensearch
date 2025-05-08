@@ -39,7 +39,7 @@ jobs:
       contents: read
     strategy:
       matrix:
-        node-version: [20, 22]
+        node-version: [20, 22, 24]
     services:
       opensearch:
         image: opensearchproject/opensearch:2.19.0
